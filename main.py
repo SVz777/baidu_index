@@ -50,7 +50,7 @@ def main():
                         b.Create()
                         time.sleep(1)
                     except:
-                        err.append([word, area_id, range_date])
+                        err.append([parent,word, area_id, date])
                         pass
 
     print(err)
@@ -90,11 +90,11 @@ def retry():
                 range_date=date,
             )
             b.Create()
-            time.sleep(1)
+            time.sleep(3)
         except:
             err.append([parent, word, area_id, date])
     print(err)
 
 
 if __name__ == '__main__':
-    main()
+    retry()
