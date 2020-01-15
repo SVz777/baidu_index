@@ -20,7 +20,7 @@ def initRes():
     res = {}
     for date in done_dates:
         res[date] = {}
-        for parent, words in all_words.items():
+        for parent, words in done_all_words.items():
             for word in words:
                 if word in nothing:
                     continue
@@ -35,7 +35,7 @@ def analyze():
     wds = []
     res = initRes()
     for date in done_dates:
-        for parent, words in all_words.items():
+        for parent, words in done_all_words.items():
             for word in words:
                 if word in nothing:
                     continue

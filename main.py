@@ -31,8 +31,7 @@ def main():
                         index_wise = json.dumps(data['userIndexes'][0]['wise'])
                         ratio_all = json.dumps(data['generalRatio'][0]['all'])
                         ratio_pc = json.dumps(data['generalRatio'][0]['pc'])
-                        ratio_wise = json.dumps(
-                            data['generalRatio'][0]['wise'])
+                        ratio_wise = json.dumps(data['generalRatio'][0]['wise'])
 
                         b = Baidu(
                             area=area_name,
@@ -48,9 +47,9 @@ def main():
                             range_date=date,
                         )
                         b.Create()
-                        time.sleep(1)
+                        time.sleep(3)
                     except:
-                        err.append([parent,word, area_id, date])
+                        err.append([parent, word, area_id, date])
                         pass
 
     print(err)
