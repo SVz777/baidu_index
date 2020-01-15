@@ -15,7 +15,7 @@ def main():
     for date in dates:
         range_date = get_range_date(date)
         for parent, words in all_words.items():
-            for area_id, area_name in areas.items():
+            for area_id, area_name in all_areas.items():
                 for word in words:
                     if word in nothing:
                         continue
@@ -61,7 +61,7 @@ def retry():
     for r in retry_data:
         parent, word, area_id, date = r
         range_date = get_range_date(date)
-        area_name = areas[area_id]
+        area_name = all_areas[area_id]
         try:
 
             print(f'fetch {parent},{word},{area_name},{date}')

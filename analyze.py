@@ -2,33 +2,18 @@
 # -*- coding: utf-8 -*-
 from src_data import *
 from save import Baidu
-import json
 import logging
+
+from utils import cal_sum
 
 logger = logging.getLogger('sakura')
 logger.setLevel(logging.WARNING)
-
-
-def s2i(s):
-    try:
-        return int(s)
-    except ValueError:
-        return 0
 
 
 def proc_all(res_date_word, bs):
     for b in bs:
         area, all = cal_sum(b)
         res_date_word[area] = all
-
-
-def cal_sum(b: Baidu):
-    if b.index_type != 'day':
-        raise Exception('err', b.index_type)
-
-    index_all = json.loads(b.index_all)
-    return b.area, sum([s2i(i)
-                        for i in index_all['data'].split(',')])
 
 
 def initRes():
@@ -40,7 +25,7 @@ def initRes():
                 if word in nothing:
                     continue
                 res[date][word] = {}
-                for city_id, city_name in citys.items():
+                for city_id, city_name in all_areas.items():
                     res[date][word][city_name] = 0
 
     return res
@@ -68,7 +53,7 @@ def analyze():
 def write2csv(res):
     with open('xxlw.csv', 'w+', encoding='GBK') as file:
         for date, data in res.items():
-            print(f'{date}年', ','.join(list(citys.values())), sep=',', file=file)
+            print(f'{date}年', ','.join(list(all_areas.values())), sep=',', file=file)
 
             for word, areas in data.items():
                 print(word, ','.join([str(i) for i in areas.values()]), sep=',', file=file)
